@@ -2,7 +2,9 @@ package com.upgenix.step_definitions;
 
 import com.upgenix.pages.LoginPage;
 import com.upgenix.pages.LogoutPage;
+import com.upgenix.utilities.BrowserUtils;
 import com.upgenix.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,10 +21,17 @@ public class Logout_StepDefinitions {
     @Given("User navigates to Login Page")
     public void user_navigates_to_login_page() {
         Driver.getDriver().get("https://qa.upgenix.net/web/login");
-        loginPage.emailBox.sendKeys("posmanager20@info.com");
-        loginPage.passwordBox.sendKeys("posmanager");
-        loginPage.loginButton.click();
     }
+    @And("User enters valid email")
+    public void userEntersValidEmail() {
+        loginPage.emailBox.sendKeys("posmanager20@info.com");
+    }
+
+    @And("User enters valid password")
+    public void userEntersValidPassword() {
+        loginPage.passwordBox.sendKeys("posmanager");
+    }
+
     @When("User clicks the username")
     public void user_clicks_the_username() {
         //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
@@ -41,8 +50,10 @@ public class Logout_StepDefinitions {
     }
     @Then("User sees session expired message")
     public void user_sees_session_expired_message() {
-        Assert.assertTrue(logoutPage.sessionExpiredMessage.isDisplayed());
+        BrowserUtils.waitFor(3);
+        Assert.assertTrue(logoutPage.sessionExpiredMessage.getAttribute("class").equals("o_dialog_warning modal-body"));
     }
+
 
 
 }

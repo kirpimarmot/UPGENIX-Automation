@@ -7,7 +7,6 @@ Feature: UPGENIX Application Login Functionality
     Given User is on the Upgenix login page
 
   Scenario Outline: User logs in with valid credentials as PosManager
-    Given User navigates to login page
     When User enters valid email address "<email>" into email input box
     And User enters valid password "<password>" into password input box
     And User clicks the login button
@@ -22,7 +21,6 @@ Feature: UPGENIX Application Login Functionality
       | posmanager38@info.com | posmanager |
 
   Scenario Outline: User logs in with valid credentials as SalesManager
-    Given User navigates to login page
     When User enters valid email address "<email>" into email input box
     And User enters valid password "<password>" into password input box
     And User clicks the login button
@@ -38,7 +36,6 @@ Feature: UPGENIX Application Login Functionality
 
 
   Scenario Outline: User logs in with invalid credentials (valid username - invalid password) as PosManager
-    Given User navigates to login page
     When User enters valid email address "<email>" into email input box
     And User enters invalid password "<password>" into password input box
     And User clicks the login button
@@ -53,7 +50,6 @@ Feature: UPGENIX Application Login Functionality
       | posmanager38@info.com | posmanagerz? |
 
   Scenario Outline: User logs in with invalid credentials (valid username - invalid password) as SalesManager
-    Given User navigates to login page
     When User enters valid email address "<email>" into email input box
     And User enters invalid password "<password>" into password input box
     And User clicks the login button
@@ -69,7 +65,6 @@ Feature: UPGENIX Application Login Functionality
       | salesmanager33@info.com | salesmanagerz? |
 
   Scenario Outline: User logs in with invalid credentials (invalid username - valid password) as PosManager
-    Given User navigates to login page
     When User enters invalid email address "<email>" into email input box
     And User enters valid password "<password>" into password input box
     And User clicks the login button
@@ -84,7 +79,6 @@ Feature: UPGENIX Application Login Functionality
       | posmanager38@info.com | posmanagerz? |
 
   Scenario Outline: User logs in with invalid credentials (invalid username - valid password) as SalesManager
-    Given User navigates to login page
     When User enters invalid email address "<email>" into email input box
     And User enters valid password "<password>" into password input box
     And User clicks the login button
@@ -112,4 +106,4 @@ Feature: UPGENIX Application Login Functionality
 
           Scenario: User verifies if the ‘Enter’ key of the keyboard is working correctly on the login page.
             When User enters valid email "salesmanager14@info.com" - password "salesmanager" and hits enter
-            Then User login to the app and very title "Odoo"
+            Then User login to the app successfully and very title "Odoo"

@@ -19,7 +19,7 @@ public class LogoutPage {
     @FindBy(xpath = "//a[.='Log out']")
     public WebElement logOutButton;
 
-    @FindBy(xpath = "//*[@id=\"modal_2\"]/div/div/div[2]")
+    @FindBy(xpath = "//div[@class='o_dialog_warning modal-body']")
     public WebElement sessionExpiredMessage;
 
 

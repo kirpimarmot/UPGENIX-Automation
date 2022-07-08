@@ -16,7 +16,7 @@ public class LoginPage {
     @FindBy(id = "password")
     public WebElement passwordBox;
 
-    @FindBy(xpath = "//button[.='Log in']")
+    @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
 
     @FindBy(xpath = "//p[@class='alert alert-danger']")

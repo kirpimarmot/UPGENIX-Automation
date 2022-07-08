@@ -16,10 +16,6 @@ public class Login_StepDefinitions {
 
     @Given("User is on the Upgenix login page")
     public void user_is_on_the_upgenix_login_page() {
-    }
-
-    @Given("User navigates to login page")
-    public void userNavigatesToLoginPage() {
         Driver.getDriver().get("https://qa.upgenix.net/web/login");
     }
 
@@ -53,11 +49,11 @@ public class Login_StepDefinitions {
         loginPage.emailBox.sendKeys(email);
     }
 
-    @Then("User sees Wrong login\\/password text above the Log in button")
-    public void userSeesWrongLoginPasswordTextAboveTheLogInButton() {
+    @Then("User sees Wrong login-password message above the Log in button")
+    public void userSeesWrongLoginPasswordMessageAboveTheLogInButton() {
         Assert.assertTrue(loginPage.errorMessage.isDisplayed());
-
     }
+
 
     @Then("Please fill out this field message should be displayed")
     public void pleaseFillOutThisFieldMessageShouldBeDisplayed() {
@@ -75,17 +71,10 @@ public class Login_StepDefinitions {
     }
 
 
-
-    @When("User writes anything in the password box {string}")
-    public void userWritesAnythingInThePasswordBox(String string) {
-        loginPage.passwordBox.sendKeys(string);
-    }
-
     @Then("User sees the password in bullet signs")
     public void userSeesThePasswordInBulletSigns() {
         Assert.assertTrue(loginPage.passwordBox.getAttribute("type").equals("password"));
     }
-
 
     @When("User enters valid email {string} - password {string} and hits enter")
     public void userEntersValidEmailPasswordAndHitsEnter(String email, String password) {
@@ -93,13 +82,5 @@ public class Login_StepDefinitions {
         loginPage.passwordBox.sendKeys(password+ Keys.ENTER);
     }
 
-    @Then("User sees Wrong login-password message above the Log in button")
-    public void userSeesWrongLoginPasswordMessageAboveTheLogInButton() {
-        Assert.assertTrue(loginPage.errorMessage.isDisplayed());
-    }
 
-    @Then("User login to the app and very title {string}")
-    public void userLoginToTheAppAndVeryTitle(String arg0) {
-        Assert.assertTrue(Driver.getDriver().getTitle().equals("Odoo"));
-    }
 }
